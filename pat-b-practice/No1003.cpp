@@ -13,6 +13,7 @@ int main(){
   std::vector<string> texts;
 
   cin >> line_number;
+  //receive the enter, kind of clear the buffer
   while(getchar() != '\n');
 
   while(index != line_number){
