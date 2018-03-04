@@ -39,7 +39,20 @@ int main(){
     if (exclude.find(n) != exclude.end())
       testNums.erase(remove(testNums.begin(),testNums.end(),n),testNums.end());
   }
+  
+  //sort the vector
+  for (unsigned i = 0; i < testNums.size(); i++) {
+    for (unsigned j = i + 1; j < testNums.size(); j++){
+      if(testNums[i] < testNums[j]){
+        unsigned temp = 0;
+        temp = testNums [i];
+        testNums[i] = testNums[j];
+        testNums[j] = temp;
+      }
+    }
+  }
 
+  //print out the results
   for (unsigned i = 0; i < testNums.size(); i++) {
     if(i + 1 < testNums.size())
       cout << testNums[i] << " ";
