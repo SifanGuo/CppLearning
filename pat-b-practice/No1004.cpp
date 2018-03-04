@@ -28,19 +28,5 @@ int main(){
   cout << m[max] << endl;
   cout << m[min] << endl;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 return 0;
 }
