@@ -18,7 +18,7 @@ int main(){
   }
   //one single digit[1,9]
   if(inputNums[0]== 0 && inputNums[1] == 0 ){
-    for(unsigned i = 1; i != inputNums[0] + 1; i++)
+    for(unsigned i = 1; i != inputNums[2] + 1; i++)
       cout << i;
   }
   //numbers in [10,99]
