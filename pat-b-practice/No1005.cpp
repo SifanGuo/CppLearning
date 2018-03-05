@@ -13,34 +13,36 @@ int main(){
   vector <int> testNums;
   cin >> inputNum;
   getchar();//receives the enter(\n)
-  
-  //exclude.insert(trainNum);
+
+  //exclude.insert(testNum);
   unsigned inputFlag = 0;
-while(inputFlag != inputNum){
-    cin >> testNum;
-    if(exclude.find(testNum) != exclude.end()) continue;//ignore the value
-    testNums.push_back(testNum);
-  while(trainNum !=1){
-    if(trainNum % 2 ==0){
-      trainNum = trainNum / 2;
-      exclude.insert(trainNum);
-    }
-    else {
-      trainNum = (3 * trainNum + 1) / 2;
-      exclude.insert(trainNum);
-    }
+  while(inputFlag != inputNum){
+      cin >> testNum;
+      inputFlag++;
+      if(exclude.find(testNum) != exclude.end()) continue;//if the value ignore the value
+
+      testNums.push_back(testNum);
+      while(testNum !=1){
+        if(testNum % 2 ==0){
+          testNum = testNum / 2;
+          exclude.insert(testNum);
+        }
+        else {
+          testNum = (3 * testNum + 1) / 2;
+          exclude.insert(testNum);
+        }
+      }
   }
-}
-  #ifndef DEBUG
-  for ( auto &w : exclude)
-    cout << w; 
-  #endif
-  
-  for ( auto &n : testNums) {
-    if (exclude.find(n) != exclude.end())
-      testNums.erase(remove(testNums.begin(),testNums.end(),n),testNums.end());
-  }
-  
+    #ifndef DEBUG
+    for ( auto &w : exclude)
+      cout << w;
+    #endif
+
+    for ( auto &n : testNums) {
+      if (exclude.find(n) != exclude.end())
+        testNums.erase(remove(testNums.begin(),testNums.end(),n),testNums.end());
+    }
+
   //sort the vector
   for (unsigned i = 0; i < testNums.size(); i++) {
     for (unsigned j = i + 1; j < testNums.size(); j++){
