@@ -12,14 +12,12 @@ int main(){
   unsigned testNum, inputNum;
   vector <int> testNums;
   cin >> inputNum;
-  getchar();//receives the enter(\n)
 
   //exclude.insert(testNum);
-  unsigned inputFlag = 0;
-  while(inputFlag != inputNum){
+
+  for (unsigned inputFlag = 0; inputFlag < inputNum; inputFlag++){
       cin >> testNum;
-      inputFlag++;
-      if(exclude.find(testNum) != exclude.end()) continue;//if the value ignore the value
+      if(exclude.find(testNum) != exclude.end()) continue;//if the value exist in the set, ignore the value
 
       testNums.push_back(testNum);
       while(testNum !=1){
@@ -37,9 +35,15 @@ int main(){
     for ( auto &w : exclude)
       cout << w;
     #endif
-
+/*
     for ( auto &n : testNums) {
       if (exclude.find(n) != exclude.end())
+        testNums.erase(remove(testNums.begin(),testNums.end(),n),testNums.end());
+    }
+*/
+//since the testNums would change as the for loop runs, that's a bug.
+    for ( auto &n : exclude) {
+      if (find(testNums.begin(),testNums.end(),n) != testNums.end())
         testNums.erase(remove(testNums.begin(),testNums.end(),n),testNums.end());
     }
 
@@ -55,13 +59,23 @@ int main(){
     }
   }
 
+//I guess there is a bug, when size equals 1, we would output space after the number
+/*
   //print out the results
   for (unsigned i = 0; i < testNums.size(); i++) {
     if(i + 1 < testNums.size())
       cout << testNums[i] << " ";
     else
       cout << testNums[i];
+  }
+*/
 
+  //print out the results
+  for (unsigned i = 0; i < testNums.size(); i++) {
+    if(i == 0)
+      cout << testNums[i] ;
+    else
+      cout << " " << testNums[i];
   }
 return 0;
 }
