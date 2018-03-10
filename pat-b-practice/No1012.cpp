@@ -6,10 +6,10 @@ using namespace std;
 
 int main(){
   unsigned inputNum, temp;
-  unsigned A1 = 0, A3 = 0, sum4 = 0, count4 = 0, A5 = 0;
+  unsigned A1 = 0, flag2 = 0, A3 = 0, sum4 = 0, count4 = 0, A5 = 0;
   int A2 = 0;
   double A4 = 0;
-  bool flag2 = false;
+
 
   cin >> inputNum;
   for(unsigned i = 0; i < inputNum; i++){
@@ -17,16 +17,17 @@ int main(){
 
     //calculate A1
     if (temp % 5 == 0 && temp % 2 == 0) A1 += temp;
+
     //calculate A2
     if (temp % 5 == 1){
       //the first operation is plus
-      if (flag2 == false){
+      if (flag2 % 2 == 0){
         A2 += temp;
-        flag2 = true;
+        flag2++;
       }
       else{
         A2 -= temp;
-        flag2 = false;
+        flag2++;
       }
     }
 
@@ -52,12 +53,13 @@ int main(){
   if(A1 > 0) cout << A1;
   else cout << 'N';
 
-
+  //maybe there is an empty list
   //print out the result of A2
-  cout << " " << A2;
+  if (flag2 > 0)  cout << " " << A2;
+  else cout << " " << A2;
 
   //print out the result of A3
-  if ( A3 > 0)  cout << " " << A3;
+  if (A3 > 0)  cout << " " << A3;
   else cout << " " << 'N';
 
   //print out the result of A4
@@ -67,7 +69,6 @@ int main(){
   //print out the result of A5
   if(A5 > 0) cout << " " << A5;
   else cout << " " << 'N';
-  
+
  return 0;
 }
-
