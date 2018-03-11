@@ -56,7 +56,7 @@ int main(){
   //maybe there is an empty list
   //print out the result of A2
   if (flag2 > 0)  cout << " " << A2;
-  else cout << " " << A2;
+  else cout << " " << 'N';
 
   //print out the result of A3
   if (A3 > 0)  cout << " " << A3;
